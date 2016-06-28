@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<title>plantMirP User Manual</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<h2 align="center">plantMirP User Manual (Version 1.0.0) </h2>
+
+<p> Jan 31 2016</p>
+
+
+
+<hr>
+
+
+<h3>About This Program</h3>
+
+<p>
+MicroRNAs (miRNAs) are a predominant type of small non-coding RNAs (sRNAs) approximately 21 nucleotides in length that play an essential role at the post-transcriptional level by either RNA degradation, translational repression or both through an RNA-induced silencing complex. 
+Identification of these molecules can aid the dissecting regulatory functions. The secondary structures of plant pre-miRNAs are much more complex than that of animal pre-miRNAs. 
+In contrast to prediction tools for animal pre-miRNAs, more less efforts have been contributed to plant pre-miRNAs. 
+A set of novel knowledge-based energy features, which has very high discriminatory power, is proposed and incorporated with existing features for speci&#64257;cally distinguishing the hairpins of real/pseudo plant pre-miRNAs. 
+A promising performance of area under receiver operating characteristic curve (AUC) of 0.94444 indicates that 5 knowledge-based energy features have very high discriminatory power. 
+The 10-fold cross-validation (CV) result demonstrates that plantMirP with full features has a promising sensitivity of 93.55% and a specificity of 71.61%. 
+Furthermore, plantMirP can greatly balance sensitivity and specificity for real/pseudo plant pre-miRNAs. 
+Taken together, we developed a promising SVM-based program, plantMirP, for predicting plant pre-miRNAs by incorporating knowledge-based energy features. 
+</p>
+
+<p>&nbsp;</p>
+<hr>
+
+
+<h3>Training model </h3>
+
+<p>Before prediction pre-miRNAs, a SVMs model should be constructed with the following command:</p>
+<p>perl plantMirP_training.pl  -P genuine_premirna.fa -N negData.fa </p>
+
+<p>&nbsp;</p>
+<hr>
+
+
+<h4>Prediction</h4>
+
+<p>perl plantMirP.pl [options] </p>
+
+<h4>options:</h4>
+
+<table border="1">
+
+  <tr>
+    <td>-D</td>
+    <td>The result directory</td>
+  </tr>
+
+  <tr>
+    <td>-T</td>
+    <td>The fasta file containing test sequences</td>
+  </tr>
+  
+  <tr>
+    <td>-P</td>
+    <td>The file containing statistical potentials</td>
+  </tr>
+  
+  <tr>
+    <td>-U</td>
+    <td>The file containing scaled model for SVMs</td>
+  </tr>
+  
+  <tr>
+    <td>-S</td>
+    <td>The file containing SVMs model</td>
+  </tr>
+  
+   <tr>
+    <td>-K</td>
+    <td>The fasta file containing positive sequences </td>
+  </tr>
+  
+   <tr>
+    <td>-G</td>
+    <td>The fasta file containing negative sequences </td>
+  </tr>
+  
+  <tr>
+    <td>-L</td>
+    <td>The absolute path to the Libsvm binary </td>
+  </tr>
+  
+  <tr>
+    <td>-J </td>
+    <td> If this option is set to 1, then using only knowledge-based energy features for prediction (default: 0).  Note: the selected feature sets must match corresponding models. </td>
+  </tr>
+  
+  
+  <tr>
+    <td>-h</td>
+    <td>Print help information</td>
+  </tr>
+  
+  </table>
+  
+ <h4>example:</h4>
+ <p>perl plantMirP.pl  -T test.fa  -S ./model/svm_model.txt  -U ./model/scaled_model.txt  -P ./model/potential.txt  -D result  -L /home/yyg/libsvm/ </p>
+  
+Or
+
+ <p>perl plantMirP.pl  -T test.fa  -S ./model/svm_model.txt  -U ./model/scaled_model.txt  -K positiveData.fa -G negativeData.fa -D result  -L /home/yyg/libsvm/ </p>
+
+<p>&nbsp;</p>
+<hr>
+
+
+<h3>Prerequisites</h3>
+<p>plantMirP are implemented in Perl  v5.20.2.  Currently, only  local stand-alone packages of LINUX system will  be provided. </p>
+<p>Please ensure LIBSVM (Version 3.14) are installed before proceeding.</p>
+<p>You can download the installation file of LIBSVM software from <a href="http://www.csie.ntu.edu.tw/~cjlin/libsvm/" target="_blank">http://www.csie.ntu.edu.tw/~cjlin/libsvm/.</a><br></p>
+<p>Then follow the installation prompts of LIBSVM software to finish installation.</p>
+
+
+<p>&nbsp;</p>
+<hr>
+
+<h3>Installation </h3>
+
+<p>Unzip the installation file and add the directory to your path.</p>
+
+<p>&nbsp;</p>
+<hr>
+
+
+
+<h3>Availability</h3>
+<p>Our softwares are freely available for academic researches. 
+For non-profit users, you can copy, distribute and use the softwares for your scientific studies. 
+Our softwares are not free for commercial usage.
+
+<p>For ordering information please please contact us.</p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+
+
+<h3>Citation</h3>
+<p>If the software has been helpful for your work, we wish you could cite the article.</p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<h3>Contacting the Author</h3>
+
+<p>We'd like to hear your questions and comments!</p>
+
+</strong>If you are having trouble getting your executable to run, please contact <a href="mailto:yyg@mail.hzau.edu.cn">Dr. Yuangen Yao</a> by E-mail: yyg@mail.hzau.edu.cn</p>
+<p>Department of Physics, College of Science, Huazhong Agricultural University, Wuhan, Hubei 430070, China</p>
+
+
+<p>&nbsp;</p>
+
+<hr>
+
+
+</body>
+</html>
